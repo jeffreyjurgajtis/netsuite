@@ -7,7 +7,7 @@ module NetSuite
       include Support::Actions
       include Namespaces::SetupCustom
 
-      actions :get, :get_list, :add, :delete, :update, :upsert, :upsert_list, :get_all
+      actions :get, :get_list, :add, :delete, :update, :upsert, :upsert_list, :get_all, :search
 
       # https://system.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2017_1/schema/record/entitycustomfield.html
       fields(
@@ -42,6 +42,7 @@ module NetSuite
 
       attr_reader :internal_id
       attr_accessor :external_id
+      attr_accessor :search_joins
 
       def initialize(attributes = {})
         @internal_id = attributes.delete(:internal_id) || attributes.delete(:@internal_id)
